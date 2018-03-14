@@ -11,7 +11,10 @@ const {
   watchCHANGE,
   watchDELETE
 } = require("./lib/fileWatcher/watcher.service");
-const { listFilesOfDir } = require("./lib/fileSystem/file.service");
+const {
+  listFilesOfDir,
+  createDirectory
+} = require("./lib/fileSystem/file.service");
 
 const deleteAsync = promisify(fs.unlink);
 
@@ -24,6 +27,10 @@ const initGenerateThumbForVideoDirectory = dir => {
     }
   });
 };
+
+// create directories synchronously on app bootstrap
+createDirectory(THUMB_DIRECTORY);
+createDirectory(VIDEO_DIRECTORY);
 
 initGenerateThumbForVideoDirectory(VIDEO_DIRECTORY);
 
