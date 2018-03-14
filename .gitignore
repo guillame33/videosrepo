@@ -1,0 +1,5 @@
+.DS_STORE
+.vsCode/
+/node_modules
+/assets
+/snapshot
